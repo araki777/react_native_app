@@ -6,7 +6,7 @@ import * as ImagePicker from "expo-image-picker";
 interface ButtonProps {
   label: string;
   theme?: string;
-  onPress?: () => Promise<void>;
+  onPress?: () => Promise<void> | void;
 }
 
 export default function Button(props: ButtonProps) {
@@ -38,10 +38,7 @@ export default function Button(props: ButtonProps) {
 
   return (
     <View style={styles.buttonContainer}>
-      <Pressable
-        style={styles.button}
-        onPress={() => alert("You pressed a button.")}
-      >
+      <Pressable style={styles.button} onPress={props.onPress}>
         <Text style={styles.buttonLabel}>{props.label}</Text>
       </Pressable>
     </View>
